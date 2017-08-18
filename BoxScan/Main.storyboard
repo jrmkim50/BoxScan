@@ -89,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="534" y="878"/>
         </scene>
-        <!--Title-->
+        <!--Box Contents-->
         <scene sceneID="fwJ-zK-Owj">
             <objects>
                 <viewController id="Ym0-IG-bp4" customClass="QRScanViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,8 +122,20 @@
                                     <action selector="openPhotoLibraryButton:" destination="Ym0-IG-bp4" eventType="touchUpInside" id="5aZ-fO-4M1"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RzM-mj-zTI">
+                                <rect key="frame" x="67" y="95" width="241" height="376"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dan-YJ-l11">
+                                <rect key="frame" x="316" y="78" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="Ym0-IG-bp4" eventType="touchUpInside" id="Wye-Wt-NEO"/>
+                                    <segue destination="dn1-vI-WCS" kind="show" id="i1Y-c6-S4n"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-Cv-Z74">
-                                <rect key="frame" x="16" y="479" width="343" height="28"/>
+                                <rect key="frame" x="18" y="479" width="339" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="J1P-v3-6te"/>
                                 </constraints>
@@ -131,59 +143,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RzM-mj-zTI">
-                                <rect key="frame" x="67" y="95" width="240" height="376"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVY-fA-ffC">
-                                <rect key="frame" x="313" y="95" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="pJB-qE-s9I"/>
-                                </constraints>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButton:" destination="Ym0-IG-bp4" eventType="touchUpInside" id="bJD-HH-LvS"/>
-                                    <segue destination="dn1-vI-WCS" kind="show" identifier="QRSegue" id="dsd-cv-Xuj">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VdH-Cv-Z74" firstAttribute="centerX" secondItem="EPH-ah-Fsp" secondAttribute="centerX" id="0K8-13-CQn"/>
+                            <constraint firstItem="EPH-ah-Fsp" firstAttribute="top" secondItem="VdH-Cv-Z74" secondAttribute="bottom" constant="25" id="20C-HE-kRH"/>
                             <constraint firstItem="RzM-mj-zTI" firstAttribute="top" secondItem="peX-5S-FoD" secondAttribute="bottom" constant="75" id="23N-AL-MlP"/>
                             <constraint firstItem="RzM-mj-zTI" firstAttribute="centerX" secondItem="VdH-Cv-Z74" secondAttribute="centerX" id="3Tg-cF-wwp"/>
-                            <constraint firstItem="wHa-aN-8tY" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leading" id="4iz-fc-4EM"/>
-                            <constraint firstItem="YVY-fA-ffC" firstAttribute="trailing" secondItem="VdH-Cv-Z74" secondAttribute="trailing" id="8u8-yp-ZyS"/>
-                            <constraint firstItem="YVY-fA-ffC" firstAttribute="trailing" secondItem="qa8-ME-N39" secondAttribute="trailingMargin" id="EPZ-gA-3S3"/>
+                            <constraint firstAttribute="trailing" secondItem="wHa-aN-8tY" secondAttribute="trailing" id="6eb-HQ-yFu"/>
+                            <constraint firstItem="VdH-Cv-Z74" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leading" constant="18" id="8NN-E8-qfq"/>
                             <constraint firstItem="VdH-Cv-Z74" firstAttribute="top" secondItem="RzM-mj-zTI" secondAttribute="bottom" constant="8" symbolic="YES" id="FBy-bz-pxY"/>
-                            <constraint firstItem="YVY-fA-ffC" firstAttribute="top" secondItem="peX-5S-FoD" secondAttribute="bottom" constant="24" id="KyX-lN-Nnk"/>
-                            <constraint firstItem="wHa-aN-8tY" firstAttribute="centerX" secondItem="VdH-Cv-Z74" secondAttribute="centerX" id="UcJ-QY-5Sg"/>
+                            <constraint firstAttribute="bottom" secondItem="wHa-aN-8tY" secondAttribute="bottom" id="JDJ-WQ-Qlw"/>
+                            <constraint firstItem="wHa-aN-8tY" firstAttribute="top" secondItem="qa8-ME-N39" secondAttribute="top" id="OGl-ej-ddu"/>
+                            <constraint firstItem="wHa-aN-8tY" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leading" id="QkS-Vz-0PP"/>
+                            <constraint firstAttribute="trailing" secondItem="VdH-Cv-Z74" secondAttribute="trailing" constant="18" id="SdB-zg-0AO"/>
+                            <constraint firstAttribute="bottom" secondItem="wHa-aN-8tY" secondAttribute="bottom" id="T2s-B8-Mwa"/>
+                            <constraint firstItem="wHa-aN-8tY" firstAttribute="centerX" secondItem="EPH-ah-Fsp" secondAttribute="centerX" id="V6z-bB-rn6"/>
                             <constraint firstItem="EPH-ah-Fsp" firstAttribute="centerX" secondItem="LcH-tC-VUG" secondAttribute="centerX" id="Vh1-pi-HFG"/>
                             <constraint firstItem="4hT-rs-v4F" firstAttribute="top" secondItem="LcH-tC-VUG" secondAttribute="bottom" constant="23" id="XL7-hw-SE4"/>
-                            <constraint firstItem="wHa-aN-8tY" firstAttribute="top" secondItem="qa8-ME-N39" secondAttribute="top" id="ZIz-DD-cK9"/>
+                            <constraint firstItem="wHa-aN-8tY" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leading" id="d60-R1-F9E"/>
                             <constraint firstItem="EPH-ah-Fsp" firstAttribute="top" secondItem="VdH-Cv-Z74" secondAttribute="bottom" constant="25" id="d9s-Va-cj1"/>
+                            <constraint firstItem="VdH-Cv-Z74" firstAttribute="top" secondItem="RzM-mj-zTI" secondAttribute="bottom" constant="8" id="e7A-h6-mVO"/>
                             <constraint firstItem="RzM-mj-zTI" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leadingMargin" constant="51" id="fkO-nm-vso"/>
                             <constraint firstItem="LcH-tC-VUG" firstAttribute="top" secondItem="EPH-ah-Fsp" secondAttribute="bottom" constant="8" symbolic="YES" id="gWa-Rf-Klz"/>
-                            <constraint firstItem="VdH-Cv-Z74" firstAttribute="leading" secondItem="qa8-ME-N39" secondAttribute="leadingMargin" id="glT-Ms-h2S"/>
-                            <constraint firstAttribute="bottom" secondItem="wHa-aN-8tY" secondAttribute="bottom" id="jKP-hn-kWp"/>
+                            <constraint firstItem="wHa-aN-8tY" firstAttribute="top" secondItem="qa8-ME-N39" secondAttribute="top" id="zPD-AO-AMn"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="WQk-sn-JnK">
+                    <navigationItem key="navigationItem" title="Box Contents" id="WQk-sn-JnK">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="guj-JY-xaO">
                             <connections>
                                 <action selector="backButton:" destination="Ym0-IG-bp4" id="vhs-pe-7wa"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="yUC-8M-013"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="errorLabel" destination="VdH-Cv-Z74" id="kgM-t5-qcK"/>
                         <outlet property="imagePicked" destination="RzM-mj-zTI" id="nUC-qi-MnD"/>
-                        <outlet property="nextLabel" destination="YVY-fA-ffC" id="LWI-n9-oX7"/>
                         <segue destination="8V6-HE-6ke" kind="show" identifier="QRSegue1" id="yCD-CD-brB"/>
                         <segue destination="etm-mN-czU" kind="unwind" identifier="unwind" unwindAction="unwindToBoxViewController:" id="gFv-lV-fC4"/>
                     </connections>
@@ -228,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="2049" y="878"/>
         </scene>
-        <!--Viewer View Controller-->
+        <!--QR Code-->
         <scene sceneID="GdJ-f8-5xc">
             <objects>
                 <viewController id="dn1-vI-WCS" customClass="QRViewerViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -247,29 +245,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-Tg-bve">
                                 <rect key="frame" x="83" y="180" width="209" height="304"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSv-1b-DwW">
-                                <rect key="frame" x="313" y="74" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="s84-IB-JUQ"/>
-                                </constraints>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveTapped:" destination="dn1-vI-WCS" eventType="touchUpInside" id="7is-1K-XEm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tLr-Tg-bve" firstAttribute="leading" secondItem="iTa-OF-dIY" secondAttribute="leadingMargin" constant="67" id="4Bl-lI-UcU"/>
-                            <constraint firstItem="vSv-1b-DwW" firstAttribute="trailing" secondItem="iTa-OF-dIY" secondAttribute="trailingMargin" id="UqD-X5-w9C"/>
                             <constraint firstItem="tLr-Tg-bve" firstAttribute="top" secondItem="t0b-my-ipj" secondAttribute="bottom" constant="160" id="bza-zd-amu"/>
                             <constraint firstItem="tLr-Tg-bve" firstAttribute="centerX" secondItem="iTa-OF-dIY" secondAttribute="centerX" id="jpa-si-gtZ"/>
-                            <constraint firstItem="vSv-1b-DwW" firstAttribute="top" secondItem="t0b-my-ipj" secondAttribute="bottom" constant="8" symbolic="YES" id="lMT-D8-uae"/>
                             <constraint firstItem="Ec0-rK-FLv" firstAttribute="top" secondItem="tLr-Tg-bve" secondAttribute="bottom" constant="139" id="qvF-6c-vJ2"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="QR Code" id="3tV-DX-jhg">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="qWF-Dv-sr2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ffn-wU-myA">
+                            <connections>
+                                <action selector="saveTapped:" destination="dn1-vI-WCS" id="Xig-ms-u54"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="qrImageView" destination="tLr-Tg-bve" id="KoA-UI-1eC"/>
                     </connections>

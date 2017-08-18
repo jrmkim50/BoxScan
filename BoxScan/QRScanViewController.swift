@@ -21,7 +21,7 @@ UINavigationControllerDelegate {
     
     let ezLoadingActivity = EZLoadingActivity.self
     
-    @IBOutlet weak var nextLabel: UIButton!
+//    @IBOutlet weak var nextLabel: UIButton!
     
     @IBOutlet weak var imagePicked: UIImageView!
     
@@ -77,12 +77,12 @@ UINavigationControllerDelegate {
         return randomString
     }
     
-    func pressed(sender: UIButton) {
-        
-        DispatchQueue.main.async {
-            self.nextLabel.isEnabled = false
-        }
-    }
+//    func pressed(sender: UIButton) {
+//        
+//        DispatchQueue.main.async {
+//            self.nextLabel.isEnabled = false
+//        }
+//    }
     
     @IBAction func saveButton(_ sender: Any) {
         if imagePicked.image != nil {
@@ -113,8 +113,9 @@ UINavigationControllerDelegate {
                 
                 if success != "nil" {
                     
-                    let ref = Database.database().reference().child("Box Photos").child(User.current.uid).child(boxHouseArray!).childByAutoId()
-                    Database.database().reference().child("Box Photos").child(User.current.uid).child(boxHouseArray!).observe(.childAdded, with: {
+                    let ref = Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!)
+                    ref.updateChildValues(urlArray)
+                    Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
                         snapshot in
                         let snapshotValue1 = snapshot.value as? NSDictionary
                         let imageURLS = snapshotValue1?["imageURL"] as? String
@@ -132,7 +133,7 @@ UINavigationControllerDelegate {
                         
                         
                     })
-                    ref.setValue(urlArray)
+//                    ref.setValue(urlArray)
                     QRSCANKEY = ref.key
                 } else {
                     print("Fail")

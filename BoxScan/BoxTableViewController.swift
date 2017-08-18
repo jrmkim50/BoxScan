@@ -15,7 +15,7 @@ class collectionCell: UICollectionViewCell {
     @IBOutlet weak var collectionLabel: UILabel!
     
 }
-
+var keyOfHouse: String?
 var boxHouseArray: String?
 var cellIndexPath: Int?
 //var boxHouseKey = [String]()
@@ -54,7 +54,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
                     print("*** YEP, segue will occur")
                     self.performSegue(withIdentifier: "ImageTakingSegue", sender: self)
                 }
-//                let keyOfHouse = temp.key
+                keyOfHouse = temp.key
                 
             }
         }

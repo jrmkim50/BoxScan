@@ -53,7 +53,7 @@ struct PostService {
         var qrAndImage = [imageAndQR]()
         let ref = Database.database().reference()
             
-        ref.child("Box Photos").child(User.current.uid).child(boxHouseArray!).queryOrderedByKey().observe(.value, with:  {
+        ref.child("Boxes").child(boxHouseArray!).queryOrderedByKey().observe(.value, with:  {
             snapshot in
             
             

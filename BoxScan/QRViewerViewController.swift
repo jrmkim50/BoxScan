@@ -22,8 +22,8 @@ class QRViewerViewController: UIViewController {
                 let ref = Database.database().reference()
                 
                 self.ezLoadingActivity.show("Loading...", disableUI: true)
-                ref.child("Box Photos").child(User.current.uid).child(boxHouseArray!).child(QRSCANKEY!).updateChildValues(qrArray)
-                Database.database().reference().child("Box Photos").child(User.current.uid).child(boxHouseArray!).observe(.childAdded, with: {
+                ref.child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrArray)
+                Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
                     snapshot in
                     let snapshotValue1 = snapshot.value as? NSDictionary
                     let qrURLS = snapshotValue1?["qrURL"] as? String

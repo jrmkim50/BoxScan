@@ -150,10 +150,10 @@
 				F12B84531F26787900F49819 /* LoginViewController.swift */,
 				F1B488CC1F38D6DA00C7F225 /* BoxTableViewController.swift */,
 				F1A40AF81F26CD3700A96B04 /* QRScanViewController.swift */,
+				F1383C971F311BA0002108AF /* QRViewerViewController.swift */,
 				F1A40AF61F26CCE500A96B04 /* HomeViewController.swift */,
 				F1527E391F277F6A00E23B07 /* MainTabBarController.swift */,
 				F1551BC01F335E750024B14F /* SignUpViewController.swift */,
-				F1383C971F311BA0002108AF /* QRViewerViewController.swift */,
 				F1C678E61F27D9CF0037F687 /* Scanner.swift */,
 				F150FBFF1F3907F70027E59E /* SettingsViewController.swift */,
 				F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */,
@@ -456,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5MH766CPQG;
 				INFOPLIST_FILE = BoxScan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SimpleSwiftJ.BoxScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,7 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5MH766CPQG;
 				INFOPLIST_FILE = BoxScan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SimpleSwiftJ.BoxScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
