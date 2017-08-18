@@ -1,0 +1,6 @@
+framework module Pods_BoxScan {
+  umbrella header "Pods-BoxScan-umbrella.h"
+
+  export *
+  module * { export * }
+}

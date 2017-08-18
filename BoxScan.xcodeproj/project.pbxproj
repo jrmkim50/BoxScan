@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BF2A5E0EB738709DF6DB846 /* Pods_BoxScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3E8DD9C71025CC18121023 /* Pods_BoxScan.framework */; };
+		F10F00561F3C974000215A75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F10F00551F3C974000215A75 /* Assets.xcassets */; };
+		F10F00581F3CA86F00215A75 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F00571F3CA86F00215A75 /* House.swift */; };
+		F11685141F267EC7006E6E9B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11685131F267EC7006E6E9B /* Login.storyboard */; };
+		F12B84541F26787900F49819 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B84531F26787900F49819 /* LoginViewController.swift */; };
+		F1383C981F311BA0002108AF /* QRViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1383C971F311BA0002108AF /* QRViewerViewController.swift */; };
+		F150FC001F3907F70027E59E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FBFF1F3907F70027E59E /* SettingsViewController.swift */; };
+		F1527E3A1F277F6A00E23B07 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1527E391F277F6A00E23B07 /* MainTabBarController.swift */; };
+		F1551BC11F335E750024B14F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1551BC01F335E750024B14F /* SignUpViewController.swift */; };
+		F1551BC41F3363110024B14F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1551BC21F3363110024B14F /* UserService.swift */; };
+		F1551BC51F3363110024B14F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1551BC31F3363110024B14F /* User.swift */; };
+		F1551BC71F3364030024B14F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1551BC61F3364030024B14F /* Main.storyboard */; };
+		F18DCA051F265FC900350688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18DCA041F265FC900350688 /* AppDelegate.swift */; };
+		F18DCA0F1F265FC900350688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F18DCA0D1F265FC900350688 /* LaunchScreen.storyboard */; };
+		F19FD3F91F43653600EF3721 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19FD3F81F43653600EF3721 /* Box.swift */; };
+		F1A40AF71F26CCE500A96B04 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A40AF61F26CCE500A96B04 /* HomeViewController.swift */; };
+		F1A40AF91F26CD3700A96B04 /* QRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A40AF81F26CD3700A96B04 /* QRScanViewController.swift */; };
+		F1B488CD1F38D6DA00C7F225 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B488CC1F38D6DA00C7F225 /* BoxTableViewController.swift */; };
+		F1BE31A31F2679FE00E86057 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1BE31A21F2679FE00E86057 /* GoogleService-Info.plist */; };
+		F1C678DD1F2799500037F687 /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C678DC1F2799500037F687 /* MGPhotoHelper.swift */; };
+		F1C678DF1F27BF650037F687 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C678DE1F27BF650037F687 /* StorageService.swift */; };
+		F1C678E11F27BF830037F687 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C678E01F27BF830037F687 /* PostService.swift */; };
+		F1C678E71F27D9CF0037F687 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C678E61F27D9CF0037F687 /* Scanner.swift */; };
+		F1D3BED71F268BA900B15ED1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D3BED61F268BA900B15ED1 /* Constants.swift */; };
+		F1D3BED91F268FD200B15ED1 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D3BED81F268FD200B15ED1 /* Storyboard+Utility.swift */; };
+		F1D5D44B1F4606A100B0D5D5 /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1D5D44A1F4606A100B0D5D5 /* Image.jpg */; };
+		F1E62AE61F3AAB0E009F2C4F /* ImageSaverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2117F88616BF9AFB391B0BAD /* Pods-BoxScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-BoxScan/Pods-BoxScan.release.xcconfig"; sourceTree = "<group>"; };
+		CA3E8DD9C71025CC18121023 /* Pods_BoxScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCA1312EF96BE8164B7DB122 /* Pods-BoxScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BoxScan/Pods-BoxScan.debug.xcconfig"; sourceTree = "<group>"; };
+		F10F00551F3C974000215A75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F10F00571F3CA86F00215A75 /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
+		F11685131F267EC7006E6E9B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F12B84531F26787900F49819 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F1383C971F311BA0002108AF /* QRViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewerViewController.swift; sourceTree = "<group>"; };
+		F150FBFF1F3907F70027E59E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F1527E391F277F6A00E23B07 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F1551BC01F335E750024B14F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F1551BC21F3363110024B14F /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		F1551BC31F3363110024B14F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1551BC61F3364030024B14F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F18DCA011F265FC800350688 /* BoxScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F18DCA041F265FC900350688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F18DCA0E1F265FC900350688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F18DCA101F265FC900350688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F19FD3F81F43653600EF3721 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		F1A40AF61F26CCE500A96B04 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F1A40AF81F26CD3700A96B04 /* QRScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScanViewController.swift; sourceTree = "<group>"; };
+		F1B488CC1F38D6DA00C7F225 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
+		F1BE31A21F2679FE00E86057 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1C678DC1F2799500037F687 /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MGPhotoHelper.swift; sourceTree = "<group>"; };
+		F1C678DE1F27BF650037F687 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F1C678E01F27BF830037F687 /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		F1C678E61F27D9CF0037F687 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		F1D3BED61F268BA900B15ED1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = BoxScan/Constants.swift; sourceTree = "<group>"; };
+		F1D3BED81F268FD200B15ED1 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Storyboard+Utility.swift"; path = "BoxScan/Storyboard+Utility.swift"; sourceTree = "<group>"; };
+		F1D5D44A1F4606A100B0D5D5 /* Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image.jpg; sourceTree = "<group>"; };
+		F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSaverViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F18DC9FE1F265FC800350688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BF2A5E0EB738709DF6DB846 /* Pods_BoxScan.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		434DF0BF7BBEE1C1BEA8C35B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCA1312EF96BE8164B7DB122 /* Pods-BoxScan.debug.xcconfig */,
+				2117F88616BF9AFB391B0BAD /* Pods-BoxScan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF791E960FCDF310E64BB0E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA3E8DD9C71025CC18121023 /* Pods_BoxScan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F18DC9F81F265FC800350688 = {
+			isa = PBXGroup;
+			children = (
+				F18DCA031F265FC900350688 /* BoxScan */,
+				F18DCA021F265FC800350688 /* Products */,
+				434DF0BF7BBEE1C1BEA8C35B /* Pods */,
+				BF791E960FCDF310E64BB0E8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F18DCA021F265FC800350688 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F18DCA011F265FC800350688 /* BoxScan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F18DCA031F265FC900350688 /* BoxScan */ = {
+			isa = PBXGroup;
+			children = (
+				F18DCA041F265FC900350688 /* AppDelegate.swift */,
+				F1B488C51F38B05F00C7F225 /* Models */,
+				F1B488C31F38B03600C7F225 /* Utilities */,
+				F1B488C21F38B01400C7F225 /* Services */,
+				F1B488C11F38AFF600C7F225 /* Controllers */,
+				F1B488C01F38AFE900C7F225 /* Storyboards */,
+				F18DCA0D1F265FC900350688 /* LaunchScreen.storyboard */,
+				F1D5D44A1F4606A100B0D5D5 /* Image.jpg */,
+				F18DCA101F265FC900350688 /* Info.plist */,
+				F1BE31A21F2679FE00E86057 /* GoogleService-Info.plist */,
+			);
+			path = BoxScan;
+			sourceTree = "<group>";
+		};
+		F1B488C01F38AFE900C7F225 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F1551BC61F3364030024B14F /* Main.storyboard */,
+				F11685131F267EC7006E6E9B /* Login.storyboard */,
+				F10F00551F3C974000215A75 /* Assets.xcassets */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		F1B488C11F38AFF600C7F225 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F12B84531F26787900F49819 /* LoginViewController.swift */,
+				F1B488CC1F38D6DA00C7F225 /* BoxTableViewController.swift */,
+				F1A40AF81F26CD3700A96B04 /* QRScanViewController.swift */,
+				F1A40AF61F26CCE500A96B04 /* HomeViewController.swift */,
+				F1527E391F277F6A00E23B07 /* MainTabBarController.swift */,
+				F1551BC01F335E750024B14F /* SignUpViewController.swift */,
+				F1383C971F311BA0002108AF /* QRViewerViewController.swift */,
+				F1C678E61F27D9CF0037F687 /* Scanner.swift */,
+				F150FBFF1F3907F70027E59E /* SettingsViewController.swift */,
+				F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F1B488C21F38B01400C7F225 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F1C678DE1F27BF650037F687 /* StorageService.swift */,
+				F1C678E01F27BF830037F687 /* PostService.swift */,
+				F1551BC21F3363110024B14F /* UserService.swift */,
+				F1C678DC1F2799500037F687 /* MGPhotoHelper.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		F1B488C31F38B03600C7F225 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F1D3BED61F268BA900B15ED1 /* Constants.swift */,
+				F1D3BED81F268FD200B15ED1 /* Storyboard+Utility.swift */,
+			);
+			name = Utilities;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F1B488C51F38B05F00C7F225 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1551BC31F3363110024B14F /* User.swift */,
+				F19FD3F81F43653600EF3721 /* Box.swift */,
+				F10F00571F3CA86F00215A75 /* House.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F18DCA001F265FC800350688 /* BoxScan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F18DCA131F265FC900350688 /* Build configuration list for PBXNativeTarget "BoxScan" */;
+			buildPhases = (
+				3F9C071C5B21E56548AE5677 /* [CP] Check Pods Manifest.lock */,
+				F18DC9FD1F265FC800350688 /* Sources */,
+				F18DC9FE1F265FC800350688 /* Frameworks */,
+				F18DC9FF1F265FC800350688 /* Resources */,
+				06D62C2CB2191308557EEB15 /* [CP] Embed Pods Frameworks */,
+				9D6F09456056B43FA150FF4B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoxScan;
+			productName = BoxScan;
+			productReference = F18DCA011F265FC800350688 /* BoxScan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F18DC9F91F265FC800350688 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = SimpleSwift;
+				TargetAttributes = {
+					F18DCA001F265FC800350688 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 5MH766CPQG;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F18DC9FC1F265FC800350688 /* Build configuration list for PBXProject "BoxScan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F18DC9F81F265FC800350688;
+			productRefGroup = F18DCA021F265FC800350688 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F18DCA001F265FC800350688 /* BoxScan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F18DC9FF1F265FC800350688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F18DCA0F1F265FC900350688 /* LaunchScreen.storyboard in Resources */,
+				F1551BC71F3364030024B14F /* Main.storyboard in Resources */,
+				F11685141F267EC7006E6E9B /* Login.storyboard in Resources */,
+				F1D5D44B1F4606A100B0D5D5 /* Image.jpg in Resources */,
+				F1BE31A31F2679FE00E86057 /* GoogleService-Info.plist in Resources */,
+				F10F00561F3C974000215A75 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06D62C2CB2191308557EEB15 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BoxScan/Pods-BoxScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F9C071C5B21E56548AE5677 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D6F09456056B43FA150FF4B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BoxScan/Pods-BoxScan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F18DC9FD1F265FC800350688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1551BC41F3363110024B14F /* UserService.swift in Sources */,
+				F1A40AF91F26CD3700A96B04 /* QRScanViewController.swift in Sources */,
+				F1C678DF1F27BF650037F687 /* StorageService.swift in Sources */,
+				F1527E3A1F277F6A00E23B07 /* MainTabBarController.swift in Sources */,
+				F12B84541F26787900F49819 /* LoginViewController.swift in Sources */,
+				F1C678DD1F2799500037F687 /* MGPhotoHelper.swift in Sources */,
+				F1A40AF71F26CCE500A96B04 /* HomeViewController.swift in Sources */,
+				F1B488CD1F38D6DA00C7F225 /* BoxTableViewController.swift in Sources */,
+				F10F00581F3CA86F00215A75 /* House.swift in Sources */,
+				F19FD3F91F43653600EF3721 /* Box.swift in Sources */,
+				F1D3BED91F268FD200B15ED1 /* Storyboard+Utility.swift in Sources */,
+				F1551BC51F3363110024B14F /* User.swift in Sources */,
+				F1D3BED71F268BA900B15ED1 /* Constants.swift in Sources */,
+				F1551BC11F335E750024B14F /* SignUpViewController.swift in Sources */,
+				F150FC001F3907F70027E59E /* SettingsViewController.swift in Sources */,
+				F1C678E11F27BF830037F687 /* PostService.swift in Sources */,
+				F1E62AE61F3AAB0E009F2C4F /* ImageSaverViewController.swift in Sources */,
+				F1383C981F311BA0002108AF /* QRViewerViewController.swift in Sources */,
+				F1C678E71F27D9CF0037F687 /* Scanner.swift in Sources */,
+				F18DCA051F265FC900350688 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F18DCA0D1F265FC900350688 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F18DCA0E1F265FC900350688 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F18DCA111F265FC900350688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F18DCA121F265FC900350688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F18DCA141F265FC900350688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCA1312EF96BE8164B7DB122 /* Pods-BoxScan.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5MH766CPQG;
+				INFOPLIST_FILE = BoxScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SimpleSwiftJ.BoxScan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F18DCA151F265FC900350688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2117F88616BF9AFB391B0BAD /* Pods-BoxScan.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5MH766CPQG;
+				INFOPLIST_FILE = BoxScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SimpleSwiftJ.BoxScan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F18DC9FC1F265FC800350688 /* Build configuration list for PBXProject "BoxScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F18DCA111F265FC900350688 /* Debug */,
+				F18DCA121F265FC900350688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F18DCA131F265FC900350688 /* Build configuration list for PBXNativeTarget "BoxScan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F18DCA141F265FC900350688 /* Debug */,
+				F18DCA151F265FC900350688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F18DC9F91F265FC800350688 /* Project object */;
+}

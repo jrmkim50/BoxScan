@@ -1,0 +1,5 @@
+module CLDCrypto [system] {
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/CommonCrypto/CommonCrypto.h"
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/CommonCrypto/CommonRandom.h"
+  export *
+}
