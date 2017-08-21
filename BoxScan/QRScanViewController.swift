@@ -19,10 +19,12 @@ class QRScanViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     var fileURL1: NSURL?
     
-    let ezLoadingActivity = EZLoadingActivity.self
+    
     
     override func viewDidLoad() {
+        let ezLoadingActivity = EZLoadingActivity.self
         ezLoadingActivity.hide()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(QRScanViewController.myObserverMethod(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
@@ -42,11 +44,11 @@ UINavigationControllerDelegate {
         Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
         
         self.navigationController?.popToRootViewController(animated: true)
-
+        
     }
-
     
-//    @IBOutlet weak var nextLabel: UIButton!
+    
+    //    @IBOutlet weak var nextLabel: UIButton!
     
     @IBOutlet weak var imagePicked: UIImageView!
     
@@ -61,7 +63,7 @@ UINavigationControllerDelegate {
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
-   
+    
     
     
     @IBAction func openPhotoLibraryButton(_ sender: Any) {
@@ -78,12 +80,12 @@ UINavigationControllerDelegate {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePicked.contentMode = .scaleToFill
             imagePicked.image = pickedImage
-
+            
             fileURL1 = info[UIImagePickerControllerReferenceURL] as? NSURL
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -100,12 +102,12 @@ UINavigationControllerDelegate {
         return randomString
     }
     
-//    func pressed(sender: UIButton) {
-//        
-//        DispatchQueue.main.async {
-//            self.nextLabel.isEnabled = false
-//        }
-//    }
+    //    func pressed(sender: UIButton) {
+    //
+    //        DispatchQueue.main.async {
+    //            self.nextLabel.isEnabled = false
+    //        }
+    //    }
     
     
     @IBAction func saveButton(_ sender: Any) {
@@ -139,7 +141,7 @@ UINavigationControllerDelegate {
                     
                     let ref = Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!)
                     ref.updateChildValues(urlArray)
-                    Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
+                    Database.database().reference().child("Boxes").child(boxHouseArray!).observeSingleEvent(of: .childAdded, with: {
                         snapshot in
                         let snapshotValue1 = snapshot.value as? NSDictionary
                         let imageURLS = snapshotValue1!["imageURL"] as? String
@@ -148,26 +150,31 @@ UINavigationControllerDelegate {
                         let urlARRACount = urlARRA.count
                         urlARRA.append(imageURLS!)
                         if (urlARRA.count == urlARRACount + 1) {
-                            self.ezLoadingActivity.hide(true, animated: false)
-                            
+                            let ezLoadingActivity = EZLoadingActivity.self
+                            ezLoadingActivity.hide(true, animated: false)
+                          
                         }
                         else {
                             print("error")
-                            self.ezLoadingActivity.show("Loading...", disableUI: true)
+                            let ezLoadingActivity = EZLoadingActivity.self
+                            ezLoadingActivity.show("Loading...", disableUI: true)
+                            return
                         }
                         
-                        
+                       //
                         
                     })
-        
-                    QRSCANKEY = ref.key
+                    
+                        QRSCANKEY = ref.key
                     self.performSegue(withIdentifier: "NextSegue", sender: self)
+                    return
                 } else {
                     print("Fail")
                     return
                 }
                 
             })
+          
         } else {
             errorLabel.text = "Choose a picture!"
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -176,9 +183,9 @@ UINavigationControllerDelegate {
         }
         
         
-
+        
     }
-
+    
     
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -189,7 +196,7 @@ UINavigationControllerDelegate {
             return false
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -202,8 +209,8 @@ UINavigationControllerDelegate {
         Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
         
     }
-
-
+    
+    
     @IBAction func printImage(_ sender: Any) {
         if imagePicked.image == nil {
             errorLabel.text = "Choose a picture!"
@@ -211,19 +218,19 @@ UINavigationControllerDelegate {
                 self.errorLabel.text = ""
             }
         } else {
-        let printInfo = UIPrintInfo(dictionary:nil)
-        printInfo.outputType = UIPrintInfoOutputType.general
-        printInfo.jobName = "My Print Job"
-        
-        // Set up print controller
-        let printController = UIPrintInteractionController.shared
-        printController.printInfo = printInfo
-        
-        // Assign a UIImage version of my UIView as a printing iten
-        printController.printingItem = self.view.toImage()
-        
-        // Do it
-        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+            let printInfo = UIPrintInfo(dictionary:nil)
+            printInfo.outputType = UIPrintInfoOutputType.general
+            printInfo.jobName = "My Print Job"
+            
+            // Set up print controller
+            let printController = UIPrintInteractionController.shared
+            printController.printInfo = printInfo
+            
+            // Assign a UIImage version of my UIView as a printing iten
+            printController.printingItem = self.view.toImage()
+            
+            // Do it
+            printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
         }
         
     }

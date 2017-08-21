@@ -22,8 +22,15 @@ class ImageSaverViewController: UIViewController {
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var qrImageViewer: UIImageView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         let ref = Database.database().reference()
         self.ezLoadingActivity.show("Loading...", disableUI: true)
         PostService.imageQRAppend(completion: {(arra) -> Void in
@@ -32,16 +39,27 @@ class ImageSaverViewController: UIViewController {
 
             self.urlToPrint = URL(string: self.qrAndImage[cellIndexPath!].imageURL)
             self.qrurlToPrint = URL(string: self.qrAndImage[cellIndexPath!].qRURL)
+            
             DispatchQueue.main.async {
-                self.qrImageView.kf.setImage(with: self.urlToPrint)
-                self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
-        
+                if self.qrAndImage[cellIndexPath!].imageURL != "nil" {
+                    self.qrImageView.kf.setImage(with: self.urlToPrint)
+                    self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
+                    
+                } else {
+                    self.qrImageView.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
+                    self.qrImageViewer.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
+                    
+                }
+//                self.qrImageView.kf.setImage(with: self.urlToPrint)
+//                self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
+//        
                 self.ezLoadingActivity.hide(true, animated: false)
                 
             }
 //            print("qrImageDICT = \(self.qrAndImage)")
 
         })
+        
         
         
         // Do any additional setup after loading the view.
@@ -54,6 +72,13 @@ class ImageSaverViewController: UIViewController {
     
     @IBAction func quit(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+     
     }
     
     @IBAction func print(_ sender: Any) {

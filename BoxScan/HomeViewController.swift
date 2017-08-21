@@ -79,7 +79,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(houseName, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     override func viewDidLoad() {
+    
         super.viewDidLoad()
         
         let databaseRef = Database.database().reference()
