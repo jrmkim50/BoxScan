@@ -14,7 +14,7 @@ import EZLoadingActivity
 class QRViewerViewController: UIViewController {
     let ezLoadingActivity = EZLoadingActivity.self
     
-
+    
     @IBOutlet weak var qrImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -57,23 +57,38 @@ class QRViewerViewController: UIViewController {
                 
             })
         }
-
         
-
+        
+        
     }
     
     
     @IBAction func quitTapped(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func printQRImage(_ sender: Any) {
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        // Assign a UIImage version of my UIView as a printing iten
+        printController.printingItem = self.view.toImage()
+        
+        // Do it
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+    }
 }
 
-    
+
 
 

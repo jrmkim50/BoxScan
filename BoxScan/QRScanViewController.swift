@@ -28,15 +28,27 @@ UINavigationControllerDelegate {
     
     func myObserverMethod(notification : NSNotification) {
         print("Observer method called")
+        myDeleteFunction()
+    }
+    
+    let firebase = Database.database().reference()
+    
+    func myDeleteFunction() {
         
+        let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
+        let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
+        self.performSegue(withIdentifier: "unwind", sender: self)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(imageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
+        
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
 
     
 //    @IBOutlet weak var nextLabel: UIButton!
     
     @IBOutlet weak var imagePicked: UIImageView!
-    
-    @IBOutlet weak var qrImageView: UIImageView!
     
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -158,7 +170,7 @@ UINavigationControllerDelegate {
             })
         } else {
             errorLabel.text = "Choose a picture!"
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.errorLabel.text = ""
             }
         }
@@ -183,13 +195,49 @@ UINavigationControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func backButton(_ sender: Any) {
-        let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Image.jpg?alt=media&token=ac08a410-e17e-4d3f-8254-aac35a0c6d52"]
-        let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Image.jpg?alt=media&token=ac08a410-e17e-4d3f-8254-aac35a0c6d52"]
+        let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
+        let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
         self.performSegue(withIdentifier: "unwind", sender: self)
         Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(imageNotFound)
         Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
         
     }
-    
 
+
+    @IBAction func printImage(_ sender: Any) {
+        if imagePicked.image == nil {
+            errorLabel.text = "Choose a picture!"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.errorLabel.text = ""
+            }
+        } else {
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.jobName = "My Print Job"
+        
+        // Set up print controller
+        let printController = UIPrintInteractionController.shared
+        printController.printInfo = printInfo
+        
+        // Assign a UIImage version of my UIView as a printing iten
+        printController.printingItem = self.view.toImage()
+        
+        // Do it
+        printController.present(from: self.view.frame, in: self.view, animated: true, completionHandler: nil)
+        }
+        
+    }
 }
+
+extension UIView {
+    func toImage() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
+
