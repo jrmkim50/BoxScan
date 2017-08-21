@@ -14,36 +14,6 @@ import EZLoadingActivity
 class QRViewerViewController: UIViewController {
     let ezLoadingActivity = EZLoadingActivity.self
     
-    @IBAction func saveTapped(_ sender: Any) {
-        PostService.createQR(for: self.qrImageView.image!, completion: { (success) -> Void in
-            
-            if success != "nil" {
-                
-                let ref = Database.database().reference()
-                
-                self.ezLoadingActivity.show("Loading...", disableUI: true)
-                ref.child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrArray)
-                Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
-                    snapshot in
-                    let snapshotValue1 = snapshot.value as? NSDictionary
-                    let qrURLS = snapshotValue1?["qrURL"] as? String
-                    var urlARRA = [String]()
-                    let urlARRACount = urlARRA.count
-                    urlARRA.append(qrURLS!)
-                    if (urlARRA.count == urlARRACount + 1) {
-                        self.ezLoadingActivity.hide(true, animated: false)
-                    }
-                })
-                
-//                self.navigationController?.popToViewController(BoxTableViewController() as! UIViewController, animated: true)
-                self.navigationController?.popToRootViewController(animated: true)
-            
-
-            
-            }
-            
-        })
-    }
 
     @IBOutlet weak var qrImageView: UIImageView!
     
@@ -58,7 +28,43 @@ class QRViewerViewController: UIViewController {
             return qrCode.image
         }()
         
+        if qrImageView != nil {
+            PostService.createQR(for: self.qrImageView.image!, completion: { (success) -> Void in
+                
+                if success != "nil" {
+                    
+                    let ref = Database.database().reference()
+                    
+                    self.ezLoadingActivity.show("Loading...", disableUI: true)
+                    ref.child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrArray)
+                    Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
+                        snapshot in
+                        let snapshotValue1 = snapshot.value as? NSDictionary
+                        let qrURLS = snapshotValue1?["qrURL"] as? String
+                        var urlARRA = [String]()
+                        let urlARRACount = urlARRA.count
+                        urlARRA.append(qrURLS!)
+                        if (urlARRA.count == urlARRACount + 1) {
+                            self.ezLoadingActivity.hide(true, animated: false)
+                        }
+                    })
+                    
+                    
+                    
+                    
+                    
+                }
+                
+            })
+        }
 
+        
+
+    }
+    
+    
+    @IBAction func quitTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,8 +72,8 @@ class QRViewerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
+}
+
     
 
-}
+

@@ -21,6 +21,17 @@ UINavigationControllerDelegate {
     
     let ezLoadingActivity = EZLoadingActivity.self
     
+    override func viewDidLoad() {
+        ezLoadingActivity.hide()
+        NotificationCenter.default.addObserver(self, selector: #selector(QRScanViewController.myObserverMethod(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+    }
+    
+    func myObserverMethod(notification : NSNotification) {
+        print("Observer method called")
+        
+    }
+
+    
 //    @IBOutlet weak var nextLabel: UIButton!
     
     @IBOutlet weak var imagePicked: UIImageView!
@@ -84,11 +95,12 @@ UINavigationControllerDelegate {
 //        }
 //    }
     
+    
     @IBAction func saveButton(_ sender: Any) {
         if imagePicked.image != nil {
             
             errorLabel.text = ""
-
+            
             let config = CLDConfiguration(cloudName: "dyrxwd9ws", apiKey: "951511335298476")
             let cloudinary = CLDCloudinary(configuration: config)
             
@@ -98,13 +110,13 @@ UINavigationControllerDelegate {
             let compresedImage = UIImage(data: imageData!)
             UIImageWriteToSavedPhotosAlbum(compresedImage!, nil, nil, nil)
             
-         
+            
             let params = CLDUploadRequestParams()
             
             let id = randomString(length: 20)
             
             params.setPublicId(id)
-        
+            
             cloudinary.createUploader().upload(data: imageData!, uploadPreset: "Jeremy", params: params)
             
             url = cloudinary.createUrl().generate(id)!
@@ -118,7 +130,8 @@ UINavigationControllerDelegate {
                     Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.childAdded, with: {
                         snapshot in
                         let snapshotValue1 = snapshot.value as? NSDictionary
-                        let imageURLS = snapshotValue1?["imageURL"] as? String
+                        let imageURLS = snapshotValue1!["imageURL"] as? String
+                        
                         var urlARRA = [String]()
                         let urlARRACount = urlARRA.count
                         urlARRA.append(imageURLS!)
@@ -132,9 +145,11 @@ UINavigationControllerDelegate {
                         }
                         
                         
+                        
                     })
-//                    ref.setValue(urlArray)
+        
                     QRSCANKEY = ref.key
+                    self.performSegue(withIdentifier: "NextSegue", sender: self)
                 } else {
                     print("Fail")
                     return
@@ -147,9 +162,9 @@ UINavigationControllerDelegate {
                 self.errorLabel.text = ""
             }
         }
-    
         
         
+
     }
 
     
@@ -168,7 +183,12 @@ UINavigationControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func backButton(_ sender: Any) {
+        let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Image.jpg?alt=media&token=ac08a410-e17e-4d3f-8254-aac35a0c6d52"]
+        let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Image.jpg?alt=media&token=ac08a410-e17e-4d3f-8254-aac35a0c6d52"]
         self.performSegue(withIdentifier: "unwind", sender: self)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(imageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
+        
     }
     
 

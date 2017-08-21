@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -125,15 +126,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RzM-mj-zTI">
                                 <rect key="frame" x="67" y="95" width="241" height="376"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dan-YJ-l11">
-                                <rect key="frame" x="316" y="78" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="saveButton:" destination="Ym0-IG-bp4" eventType="touchUpInside" id="Wye-Wt-NEO"/>
-                                    <segue destination="dn1-vI-WCS" kind="show" id="i1Y-c6-S4n"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-Cv-Z74">
                                 <rect key="frame" x="18" y="479" width="339" height="28"/>
                                 <constraints>
@@ -171,12 +163,19 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Box Contents" id="WQk-sn-JnK">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="guj-JY-xaO">
-                            <connections>
-                                <action selector="backButton:" destination="Ym0-IG-bp4" id="vhs-pe-7wa"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="yUC-8M-013"/>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Back" id="guj-JY-xaO">
+                                <connections>
+                                    <action selector="backButton:" destination="Ym0-IG-bp4" id="vhs-pe-7wa"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Next" id="fvD-n5-gAh">
+                                <connections>
+                                    <action selector="saveButton:" destination="Ym0-IG-bp4" id="6uB-gq-sTS"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Print" id="eEf-AQ-PBm"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -184,6 +183,7 @@
                         <outlet property="imagePicked" destination="RzM-mj-zTI" id="nUC-qi-MnD"/>
                         <segue destination="8V6-HE-6ke" kind="show" identifier="QRSegue1" id="yCD-CD-brB"/>
                         <segue destination="etm-mN-czU" kind="unwind" identifier="unwind" unwindAction="unwindToBoxViewController:" id="gFv-lV-fC4"/>
+                        <segue destination="dn1-vI-WCS" kind="show" identifier="NextSegue" id="qWT-9X-nNH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPQ-z4-Mye" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,18 +256,20 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="QR Code" id="3tV-DX-jhg">
-                        <barButtonItem key="leftBarButtonItem" title="Quit" id="qWF-Dv-sr2"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="ffn-wU-myA">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="qWF-Dv-sr2">
                             <connections>
-                                <action selector="saveTapped:" destination="dn1-vI-WCS" id="Xig-ms-u54"/>
+                                <action selector="quitTapped:" destination="dn1-vI-WCS" id="uah-QZ-m9C"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Print" id="ffn-wU-myA"/>
                     </navigationItem>
                     <connections>
                         <outlet property="qrImageView" destination="tLr-Tg-bve" id="KoA-UI-1eC"/>
+                        <segue destination="65h-75-ggP" kind="unwind" unwindAction="unwindToBoxViewController:" id="81L-6b-udV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ja-ve-XIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="65h-75-ggP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1337" y="1630"/>
         </scene>
