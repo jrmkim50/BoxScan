@@ -5,9 +5,8 @@
 //  Created by Jeremy Kim on 7/25/17.
 //  Copyright © 2017 SimpleSwift. All rights reserved.
 //
-
 import UIKit
-import Kingfisher
+import Darwin
 import AVFoundation
 
 
@@ -15,16 +14,15 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet weak var messageLabel: UITextView!
     
-    @IBOutlet var qrImageView: UIImageView!
     
     /*
-    NSAttributedString(string: messageLabel, attributes: [
-    NSStrokeColorAttributeName : UIColor.blackColor(),
-    NSForegroundColorAttributeName : UIColor.whiteColor(),
-    NSStrokeWidthAttributeName : NSNumber(float: -4.0),
-    NSFontAttributeName : UIFont.systemFontOfSize(30.0)
-    ])
-    */
+     NSAttributedString(string: messageLabel, attributes: [
+     NSStrokeColorAttributeName : UIColor.blackColor(),
+     NSForegroundColorAttributeName : UIColor.whiteColor(),
+     NSStrokeWidthAttributeName : NSNumber(float: -4.0),
+     NSFontAttributeName : UIFont.systemFontOfSize(30.0)
+     ])
+     */
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
@@ -34,18 +32,10 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        qrImageView.image = #imageLiteral(resourceName: "add.png")
+        
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
-        let messageLabelText = messageLabel.text
-        
-        let foo = NSAttributedString(string: messageLabel.text!, attributes: [
-            NSStrokeColorAttributeName : UIColor.black,
-            NSForegroundColorAttributeName : UIColor.white,
-            NSStrokeWidthAttributeName : NSNumber(value: -10.0),
-            NSFontAttributeName : UIFont.systemFont(ofSize: 20.0)
-            ])
-      //  messageLabel.text = String(describing: foo)
+        messageLabel.text = "No barcode/QR code is detected"
         
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
@@ -126,9 +116,10 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             if metadataObj.stringValue != nil {
                 messageLabel.isEditable = false;
                 messageLabel.dataDetectorTypes = UIDataDetectorTypes.all;
-                let testurl = URL(string: "http://res.cloudinary.com/dyrxwd9ws/image/upload/dHVl7XQdLyogSKvA18vu.jpg")
-                if let url1 = URL(string: "\(messageLabel.text).jpg") {
-                    qrImageView.kf.setImage(with: url1)
+                if let url1 = URL(string: messageLabel.text) {
+                    //                    if UIApplication.shared.canOpenURL(url1) == true{
+                    UIApplication.shared.open(url1, options: [:], completionHandler: nil)
+                    
                     
                 } else {
                     messageLabel.text = metadataObj.stringValue

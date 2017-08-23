@@ -231,26 +231,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMj-WG-OqN">
-                                <rect key="frame" x="56" y="52" width="263" height="309"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ydt-sR-pBA" firstAttribute="leading" secondItem="90f-Lk-CMn" secondAttribute="leadingMargin" id="2rb-Me-3E7"/>
-                            <constraint firstItem="hMj-WG-OqN" firstAttribute="top" secondItem="KG7-Bw-ANw" secondAttribute="bottom" constant="32" id="SfH-Lg-ZET"/>
-                            <constraint firstItem="hMj-WG-OqN" firstAttribute="leading" secondItem="90f-Lk-CMn" secondAttribute="leadingMargin" constant="40" id="Wci-Ir-axr"/>
                             <constraint firstItem="ydt-sR-pBA" firstAttribute="trailing" secondItem="90f-Lk-CMn" secondAttribute="trailingMargin" id="bTC-2F-aBE"/>
                             <constraint firstItem="yfe-4V-vvO" firstAttribute="top" secondItem="ydt-sR-pBA" secondAttribute="bottom" constant="8" symbolic="YES" id="fNq-Fb-4EM"/>
-                            <constraint firstItem="hMj-WG-OqN" firstAttribute="centerX" secondItem="ydt-sR-pBA" secondAttribute="centerX" id="fuT-S4-I9m"/>
-                            <constraint firstItem="ydt-sR-pBA" firstAttribute="top" secondItem="hMj-WG-OqN" secondAttribute="bottom" constant="8" symbolic="YES" id="mea-jj-XHU"/>
                             <constraint firstItem="ydt-sR-pBA" firstAttribute="top" secondItem="KG7-Bw-ANw" secondAttribute="bottom" constant="349" id="qa9-x0-Yls"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="" image="Group 2" selectedImage="Group 6-1" id="PI6-ub-OXr"/>
                     <connections>
                         <outlet property="messageLabel" destination="ydt-sR-pBA" id="sA2-OB-vzg"/>
-                        <outlet property="qrImageView" destination="hMj-WG-OqN" id="XGo-gd-PTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kad-yj-sOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
