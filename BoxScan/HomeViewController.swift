@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-
+import EZLoadingActivity
 
 class YourCell: UITableViewCell {
     
@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.reloadData()
         }
     }
+    let ezLoadingActivity = EZLoadingActivity.self
     
     var boxIDS = [boxIDSStruct]() {
         didSet {
@@ -87,10 +88,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        
+                    
         let databaseRef = Database.database().reference()
         databaseRef.child("Houses").child(User.current.uid).queryOrderedByKey().observe(.childAdded, with: {
+            
             snapshot in
+
             let snapshotValue = snapshot.value as? NSDictionary
             let userHouseInput = snapshotValue!["userHouseInput"] as? String
             let uid = snapshotValue!["uid"] as? String
@@ -98,6 +101,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(self.houses)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
             }
             
             
@@ -133,12 +137,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! YourCell
+        if( indexPath.row % 2 == 0){
+            cell.backgroundColor = UIColor(rgb: 0xF9EEEA)
+            cell.textLabel?.textColor = UIColor(rgb: 0x054A91)
+        }
+        else {
+            cell.backgroundColor = UIColor(rgb: 0x696CA7)
+            cell.textLabel?.textColor = UIColor(rgb: 0xDBE4EE)
+        }
         let ref = Database.database().reference().child("Houses").child(User.current.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 DispatchQueue.main.async {
                     cell.label2.text = self.houses[indexPath.row].houseNameTitle
+                    
                 }
                 
             } else {
@@ -173,4 +186,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //    }
     
     
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }

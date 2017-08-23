@@ -27,3 +27,7 @@ struct imageAndQR {
     let imageURL: String!
     let qRURL: String!
 }
+
+struct boxUIDS {
+    let boxID: String!
+}

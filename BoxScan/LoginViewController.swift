@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
                 UserService.show(forUID: (user?.uid)!) { (user) in
                     if let user = user {
                         User.setCurrent(user, writeToUserDefaults: true)
-                        Database.database().reference().child("users").child((user.uid)).updateChildValues(["email": email!, "password": password!])
+                        Database.database().reference().child("users").child((user.uid)).updateChildValues(["email": email!])
                         DispatchQueue.main.async {
                         self.signIn()
                         }

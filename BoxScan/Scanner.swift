@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Darwin
+import Kingfisher
 import AVFoundation
 
 
@@ -15,6 +15,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet weak var messageLabel: UITextView!
     
+    @IBOutlet var qrImageView: UIImageView!
     
     /*
     NSAttributedString(string: messageLabel, attributes: [
@@ -33,7 +34,7 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        qrImageView.image = #imageLiteral(resourceName: "add.png")
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
         // as the media type parameter.
         let messageLabelText = messageLabel.text
@@ -125,11 +126,10 @@ class Scanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             if metadataObj.stringValue != nil {
                 messageLabel.isEditable = false;
                 messageLabel.dataDetectorTypes = UIDataDetectorTypes.all;
-                if let url1 = URL(string: messageLabel.text) {
-//                    if UIApplication.shared.canOpenURL(url1) == true{
-                        UIApplication.shared.open(url1, options: [:], completionHandler: nil)
-                
-
+                let testurl = URL(string: "http://res.cloudinary.com/dyrxwd9ws/image/upload/dHVl7XQdLyogSKvA18vu.jpg")
+                if let url1 = URL(string: "\(messageLabel.text).jpg") {
+                    qrImageView.kf.setImage(with: url1)
+                    
                 } else {
                     messageLabel.text = metadataObj.stringValue
                 }

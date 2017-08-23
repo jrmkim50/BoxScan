@@ -34,28 +34,20 @@ class ImageSaverViewController: UIViewController {
         let ref = Database.database().reference()
         self.ezLoadingActivity.show("Loading...", disableUI: true)
         PostService.imageQRAppend(completion: {(arra) -> Void in
-            
             self.qrAndImage = arra
-
-            self.urlToPrint = URL(string: self.qrAndImage[cellIndexPath!].imageURL)
-            self.qrurlToPrint = URL(string: self.qrAndImage[cellIndexPath!].qRURL)
-            
-            DispatchQueue.main.async {
-                if self.qrAndImage[cellIndexPath!].imageURL != "nil" {
-                    self.qrImageView.kf.setImage(with: self.urlToPrint)
-                    self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
-                    
-                } else {
-                    self.qrImageView.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
-                    self.qrImageViewer.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
-                    
-                }
-//                self.qrImageView.kf.setImage(with: self.urlToPrint)
-//                self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
-//        
-                self.ezLoadingActivity.hide(true, animated: false)
-                
+            if (self.qrAndImage[cellIndexPath!].imageURL != nil && self.qrAndImage[cellIndexPath!].qRURL != nil) {
+                self.urlToPrint = URL(string: self.qrAndImage[cellIndexPath!].imageURL)
+                self.qrurlToPrint = URL(string: self.qrAndImage[cellIndexPath!].qRURL)
+                self.qrImageView.kf.setImage(with: self.urlToPrint)
+                self.qrImageViewer.kf.setImage(with: self.qrurlToPrint)
             }
+            else {
+                self.qrImageView.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
+                self.qrImageViewer.kf.setImage(with: "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4" as? Resource)
+            }
+            
+            self.ezLoadingActivity.hide()
+            
 //            print("qrImageDICT = \(self.qrAndImage)")
 
         })

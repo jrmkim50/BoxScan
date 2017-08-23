@@ -32,7 +32,6 @@
 		F1C678E71F27D9CF0037F687 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C678E61F27D9CF0037F687 /* Scanner.swift */; };
 		F1D3BED71F268BA900B15ED1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D3BED61F268BA900B15ED1 /* Constants.swift */; };
 		F1D3BED91F268FD200B15ED1 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D3BED81F268FD200B15ED1 /* Storyboard+Utility.swift */; };
-		F1D5D44B1F4606A100B0D5D5 /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F1D5D44A1F4606A100B0D5D5 /* Image.jpg */; };
 		F1E62AE61F3AAB0E009F2C4F /* ImageSaverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +65,6 @@
 		F1C678E61F27D9CF0037F687 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		F1D3BED61F268BA900B15ED1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = BoxScan/Constants.swift; sourceTree = "<group>"; };
 		F1D3BED81F268FD200B15ED1 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Storyboard+Utility.swift"; path = "BoxScan/Storyboard+Utility.swift"; sourceTree = "<group>"; };
-		F1D5D44A1F4606A100B0D5D5 /* Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image.jpg; sourceTree = "<group>"; };
 		F1E62AE51F3AAB0E009F2C4F /* ImageSaverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSaverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +125,6 @@
 				F1B488C11F38AFF600C7F225 /* Controllers */,
 				F1B488C01F38AFE900C7F225 /* Storyboards */,
 				F18DCA0D1F265FC900350688 /* LaunchScreen.storyboard */,
-				F1D5D44A1F4606A100B0D5D5 /* Image.jpg */,
 				F18DCA101F265FC900350688 /* Info.plist */,
 				F1BE31A21F2679FE00E86057 /* GoogleService-Info.plist */,
 			);
@@ -258,7 +255,6 @@
 				F18DCA0F1F265FC900350688 /* LaunchScreen.storyboard in Resources */,
 				F1551BC71F3364030024B14F /* Main.storyboard in Resources */,
 				F11685141F267EC7006E6E9B /* Login.storyboard in Resources */,
-				F1D5D44B1F4606A100B0D5D5 /* Image.jpg in Resources */,
 				F1BE31A31F2679FE00E86057 /* GoogleService-Info.plist in Resources */,
 				F10F00561F3C974000215A75 /* Assets.xcassets in Resources */,
 			);

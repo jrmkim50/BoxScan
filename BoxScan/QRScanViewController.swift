@@ -19,11 +19,10 @@ class QRScanViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
     var fileURL1: NSURL?
     
-    
+    let ezLoadingActivity = EZLoadingActivity.self
     
     override func viewDidLoad() {
-        let ezLoadingActivity = EZLoadingActivity.self
-        ezLoadingActivity.hide()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(QRScanViewController.myObserverMethod(notification:)), name:NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
@@ -150,14 +149,14 @@ UINavigationControllerDelegate {
                         let urlARRACount = urlARRA.count
                         urlARRA.append(imageURLS!)
                         if (urlARRA.count == urlARRACount + 1) {
-                            let ezLoadingActivity = EZLoadingActivity.self
-                            ezLoadingActivity.hide(true, animated: false)
+                            
+                            self.ezLoadingActivity.hide(true, animated: false)
                           
                         }
                         else {
                             print("error")
-                            let ezLoadingActivity = EZLoadingActivity.self
-                            ezLoadingActivity.show("Loading...", disableUI: true)
+                            
+                            self.ezLoadingActivity.show("Loading...", disableUI: true)
                             return
                         }
                         
@@ -166,6 +165,7 @@ UINavigationControllerDelegate {
                     })
                     
                         QRSCANKEY = ref.key
+                    self.ezLoadingActivity.show("Loading...", disableUI: true)
                     self.performSegue(withIdentifier: "NextSegue", sender: self)
                     return
                 } else {

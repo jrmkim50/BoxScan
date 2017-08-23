@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
             }
             else {
                 self.showAlert("Succesfully signed up.")
-                Database.database().reference().child("users").child((user?.uid)!).updateChildValues(["email": email!, "password": password!])
+                Database.database().reference().child("users").child((user?.uid)!).updateChildValues(["email": email!])
                 
                 UserService.show(forUID: (user?.uid)!) { (user) in
                     if let user = user {

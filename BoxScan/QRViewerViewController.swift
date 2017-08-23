@@ -19,7 +19,7 @@ class QRViewerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ezLoadingActivity.show("Loading...", disableUI: true)
+        self.ezLoadingActivity.hide()
         
         qrImageView.image = {
             var qrCode = QRCode(url)!
