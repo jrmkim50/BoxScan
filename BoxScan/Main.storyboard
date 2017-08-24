@@ -23,9 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-Cl-FPL">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-Cl-FPL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wgA-XP-Few">
                                     <size key="itemSize" width="150" height="150"/>
@@ -41,13 +40,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Group-2" translatesAutoresizingMaskIntoConstraints="NO" id="pd0-9v-7xT">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group-2" translatesAutoresizingMaskIntoConstraints="NO" id="pd0-9v-7xT">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="117"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHv-gW-Tgb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHv-gW-Tgb">
                                                     <rect key="frame" x="20" y="100" width="110" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" red="0.93333333333333335" green="1" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -55,6 +52,16 @@
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.49803921568627452" green="0.84705882352941175" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="wHv-gW-Tgb" firstAttribute="leading" secondItem="gyY-6G-jVH" secondAttribute="leadingMargin" constant="12" id="GcL-Gw-dsY"/>
+                                            <constraint firstItem="wHv-gW-Tgb" firstAttribute="top" secondItem="gyY-6G-jVH" secondAttribute="topMargin" constant="92" id="Idv-4m-jF0"/>
+                                            <constraint firstItem="pd0-9v-7xT" firstAttribute="top" secondItem="gyY-6G-jVH" secondAttribute="top" id="SFe-2U-UfD"/>
+                                            <constraint firstAttribute="trailing" secondItem="pd0-9v-7xT" secondAttribute="trailing" id="Wye-JN-tHO"/>
+                                            <constraint firstAttribute="bottom" secondItem="wHv-gW-Tgb" secondAttribute="bottom" id="c81-t1-Fmd"/>
+                                            <constraint firstItem="pd0-9v-7xT" firstAttribute="centerX" secondItem="wHv-gW-Tgb" secondAttribute="centerX" id="qim-mX-vzh"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="pd0-9v-7xT" secondAttribute="bottom" constant="25" id="rNJ-vz-ZDS"/>
+                                            <constraint firstItem="pd0-9v-7xT" firstAttribute="leading" secondItem="gyY-6G-jVH" secondAttribute="leading" id="xSg-qS-Pky"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="15"/>
@@ -62,7 +69,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="collectionLabel2" destination="wHv-gW-Tgb" id="U6W-dd-2gA"/>
-                                            <segue destination="8V6-HE-6ke" kind="show" identifier="CollectionSeg2" id="u5t-0d-D8a"/>
+                                            <segue destination="8V6-HE-6ke" kind="show" id="oUr-gt-KSp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -73,6 +80,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rdD-Cl-FPL" secondAttribute="bottom" id="AxV-W4-3gN"/>
+                            <constraint firstAttribute="trailing" secondItem="rdD-Cl-FPL" secondAttribute="trailing" id="JBU-W3-xtw"/>
+                            <constraint firstItem="rdD-Cl-FPL" firstAttribute="leading" secondItem="d4G-7I-Iv7" secondAttribute="leading" id="Mpg-ay-428"/>
+                            <constraint firstItem="rdD-Cl-FPL" firstAttribute="top" secondItem="d4G-7I-Iv7" secondAttribute="top" id="PAy-u7-rfQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Location In House" id="GhN-YT-89o">
                         <barButtonItem key="rightBarButtonItem" title="New Location" id="XfN-bl-Kxc">
@@ -599,6 +612,6 @@
         <image name="tab_home_black" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u5t-0d-D8a"/>
+        <segue reference="oUr-gt-KSp"/>
     </inferredMetricsTieBreakers>
 </document>

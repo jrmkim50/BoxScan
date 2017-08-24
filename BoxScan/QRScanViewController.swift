@@ -39,8 +39,8 @@ UINavigationControllerDelegate {
         let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
         let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
         self.performSegue(withIdentifier: "unwind", sender: self)
-        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(imageNotFound)
-        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).child(loc[cellPath!].firLocationUID).updateChildValues(imageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).child(loc[cellPath!].firLocationUID).updateChildValues(qrImageNotFound)
         
         self.navigationController?.popToRootViewController(animated: true)
         
@@ -138,9 +138,9 @@ UINavigationControllerDelegate {
                 
                 if success != "nil" {
                     
-                    let ref = Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!)
+                    let ref = Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).child(loc[cellPath!].firLocationUID)
                     ref.updateChildValues(urlArray)
-                    Database.database().reference().child("Boxes").child(boxHouseArray!).observeSingleEvent(of: .childAdded, with: {
+                    Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).observeSingleEvent(of: .childAdded, with: {
                         snapshot in
                         let snapshotValue1 = snapshot.value as? NSDictionary
                         let imageURLS = snapshotValue1!["imageURL"] as? String
@@ -205,8 +205,8 @@ UINavigationControllerDelegate {
         let imageNotFound: [String: String] = ["imageURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
         let qrImageNotFound: [String: String] = ["qrURL": "https://firebasestorage.googleapis.com/v0/b/boxscan-a76fb.appspot.com/o/Bitmap.png?alt=media&token=8420878c-db30-4ba5-b656-793ab414a4f4"]
         self.performSegue(withIdentifier: "unwind", sender: self)
-        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(imageNotFound)
-        Database.database().reference().child("Boxes").child(boxHouseArray!).child(keyOfHouse!).updateChildValues(qrImageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).child(loc[cellPath!].firLocationUID).updateChildValues(imageNotFound)
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child(locationKey!).child(loc[cellPath!].firLocationUID).updateChildValues(qrImageNotFound)
         
     }
     

@@ -22,7 +22,6 @@ class collectionCell: UICollectionViewCell {
 }
 
 var keyOfHouse: String?
-var boxHouseArray: String?
 var cellIndexPath: Int?
 
 
@@ -32,7 +31,8 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var arrayDictKey = [String]()
     
-    
+    var indexNumber2: Int?
+    var locIDS = [locations]()
     var arrayDict: NSDictionary?
     let ezLoadingActivity = EZLoadingActivity.self
     var item: NSMutableDictionary?
@@ -40,7 +40,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     func myDeleteFunction(childIWantToRemove: Box, completion: @escaping (Int?) -> Void) {
         
         let firebase = Database.database().reference()
-        firebase.child("Boxes").child(boxHouseArray!).child(childIWantToRemove.firBoxUID).removeValue { (error, ref) in
+        firebase.child("Boxes").child(boxHouseArray!).child(locationKey!).child(childIWantToRemove.firBoxUID).removeValue { (error, ref) in
             if error != nil {
                 completion(nil)
                 print("error \(error)")
@@ -54,6 +54,42 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
         
     }
     
+    @IBAction func deleteColor(_ sender: Any) {
+        guard let sender = sender as? UIView else {return}
+        guard let boxCell = sender.superview?.superview as? collectionCell else {return}
+        
+        guard let box = boxCell.box else {return}
+        
+        
+        let prompt = UIAlertController(title: "Are you sure you want to delete?", message: "If so, press OK", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.myDeleteFunction(childIWantToRemove: box, completion: { (success) in
+                self.loadBoxes()
+                //                    self.collectionView.reloadData()
+                
+            })
+            
+            
+            
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        prompt.addAction(okAction)
+        prompt.addAction(cancelAction)
+        
+        
+        
+        present(prompt, animated: true, completion: { (action) in
+            
+            
+        })
+        
+        
+        
+        
+    }
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     var boxes = [Box]()  {
@@ -64,7 +100,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var boxIDS = [boxUIDS]()
     
-    var indexNumber2: Int?
+    
     var locIDS1 = [boxIDSStruct]()
     let boxInput = ""
     var uidArray = [String]()
@@ -85,7 +121,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
                 let boxNameTitle: [String: String] = ["boxNameInput": boxInput!, "boxUid": User.current.uid]
                 let databaseRef = Database.database().reference()
                 //                self.boxHouseArray = self.uidArray[self.indexNumber1!]
-                let temp = databaseRef.child("Boxes").child(boxHouseArray!).childByAutoId()
+                let temp = databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).childByAutoId()
                 temp.setValue(boxNameTitle) { (error, ref) in
                     if let error = error {
                         assertionFailure(error.localizedDescription)
@@ -130,7 +166,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func loadBoxes() {
         let databaseRef = Database.database().reference()
-        databaseRef.child("Boxes").child(boxHouseArray!).observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else {
@@ -144,18 +180,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
                 print(boxData)
                 self.boxes.append(Box(boxTitle: boxData["boxNameInput"] as! String, firBoxUID: boxSnapshot.key))
             }
-            
-            
-//            let snapshotValue2 = snapshot.value as? NSDictionary
-//            self.arrayDictKey.append(snapshot.key)
-//            let userBoxInput = snapshotValue2!["boxNameInput"] as? String
-//            let boxUID = snapshotValue2!["boxUid"] as? String
-//            
-//            //self.boxes.insert(Box(boxTitle: userBoxInput, firBoxUID: boxUID), at: 0)
-//            //Use arrays.append and reverse
-//            self.boxes.append(Box(boxTitle: userBoxInput, firBoxUID: boxUID))
-            
-            
+        
             
             self.boxes.sort(by: { (boxA, boxB) -> Bool in
                 boxA.boxTitle < boxB.boxTitle
@@ -183,9 +208,6 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         loadBoxes()
         
-        print(self.boxes)
-        print(self.locIDS1)
-        
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -204,11 +226,6 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
         return boxes.count
         
     }
-    
-    //    func deleteUser(sender:UIButton) {
-    //
-    //        myDeleteFunction()
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

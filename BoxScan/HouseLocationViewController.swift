@@ -19,19 +19,19 @@ class collectionViewCellHouseLocation: UICollectionViewCell {
 }
 
 var locationKey: String?
+var boxHouseArray: String?
+var locationArray: [String]?
+var locationDict: [String]?
+var loc = [locations]()
+var cellPath: Int?
 
 class HouseLocationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var loc = [locations]()  {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
     
     var boxIDS = [boxUIDS]()
-    var cellPath: Int?
+    
     var indexNumber1: Int?
     var boxIDS1 = [boxIDSStruct]()
     let boxInput = ""
@@ -51,10 +51,26 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
         
         loadLocations()
         
-        print(self.loc)
+        print(loc)
         print(self.boxIDS1)
         
         self.hideKeyboardWhenTappedAround()
+        Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.value, with: {
+            (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else {
+                    print("this did not work or there is no data?")
+                    return }
+
+            loc = [locations]()
+            
+            for locationSnapshot in snapshot {
+                let locationData = locationSnapshot.value as! [String: Any?]
+                print(locationData)
+                loc.append(locations(locationHouse: locationData["locationInput"] as! String, firLocationUID: locationSnapshot.key))
+//                print(loc[self.indexNumber1!].firLocationUID)
+            }
+        })
     }
     
     @IBAction func newLocationTapped(_ sender: Any) {
@@ -75,10 +91,9 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
                     }
                     print("*** YEP, segue will occur")
                     self.loadLocations()
-                    self.performSegue(withIdentifier: "CollectionSeg2", sender: self)
+//                    self.performSegue(withIdentifier: "CollectionSeg2", sender: self)
                 }
                 locationKey = temp.key
-                
                 
             }
         }
@@ -105,12 +120,12 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
                     print("this did not work or there is no data?")
                     return }
             
-            self.loc = [locations]()
+            loc = [locations]()
             
             for boxSnapshot in snapshot {
                 let boxData = boxSnapshot.value as! [String: Any?]
                 print(boxData)
-                self.loc.append(locations(locationHouse: boxData["locationInput"] as! String, firLocationUID: boxSnapshot.key))
+                loc.append(locations(locationHouse: boxData["locationInput"] as! String, firLocationUID: boxSnapshot.key))
             }
     
             DispatchQueue.main.async {
@@ -136,13 +151,12 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
         
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseLocationCell", for: indexPath) as! collectionViewCellHouseLocation
         
-        collectionCell.collectionLabel2.text = self.loc[indexPath.row].locationHouse
-        collectionCell.locate = self.loc[indexPath.row]
+        collectionCell.collectionLabel2.text = loc[indexPath.row].locationHouse
+        collectionCell.locate = loc[indexPath.row]
         
         return collectionCell
         
     }
-    
     
 
     
