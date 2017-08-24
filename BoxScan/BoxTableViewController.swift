@@ -54,43 +54,6 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
         
     }
     
-    @IBAction func deleteColor(_ sender: Any) {
-        guard let sender = sender as? UIView else {return}
-        guard let boxCell = sender.superview?.superview as? collectionCell else {return}
-        
-        guard let box = boxCell.box else {return}
-        
-        
-        let prompt = UIAlertController(title: "Are you sure you want to delete?", message: "If so, press OK", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.myDeleteFunction(childIWantToRemove: box, completion: { (success) in
-                    self.loadBoxes()
-//                    self.collectionView.reloadData()
-            
-            })
-
-            
-            
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        prompt.addAction(okAction)
-        prompt.addAction(cancelAction)
-        
-        
-        
-        present(prompt, animated: true, completion: { (action) in
-            
-            
-        })
-        
-        
-        
-        
-    }
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var boxes = [Box]()  {
@@ -101,8 +64,8 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     var boxIDS = [boxUIDS]()
     
-    var indexNumber1: Int?
-    var boxIDS1 = [boxIDSStruct]()
+    var indexNumber2: Int?
+    var locIDS1 = [boxIDSStruct]()
     let boxInput = ""
     var uidArray = [String]()
     var tapGesture = UITapGestureRecognizer()
@@ -218,16 +181,10 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.ezLoadingActivity.show("Loading ... ", disableUI: false)
         }
         
-        for uid in self.boxIDS1 {
-            self.uidArray.append(uid.houseUIDInput)
-        }
-        
-        boxHouseArray = self.uidArray[self.indexNumber1!]
-        
         loadBoxes()
         
         print(self.boxes)
-        print(self.boxIDS1)
+        print(self.locIDS1)
         
         self.hideKeyboardWhenTappedAround()
     }

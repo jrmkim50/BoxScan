@@ -12,6 +12,7 @@
 		F10F00581F3CA86F00215A75 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F00571F3CA86F00215A75 /* House.swift */; };
 		F11685141F267EC7006E6E9B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F11685131F267EC7006E6E9B /* Login.storyboard */; };
 		F12B84541F26787900F49819 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B84531F26787900F49819 /* LoginViewController.swift */; };
+		F1301EE51F4E1D4700EA8CCA /* HouseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1301EE41F4E1D4700EA8CCA /* HouseLocationViewController.swift */; };
 		F1383C981F311BA0002108AF /* QRViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1383C971F311BA0002108AF /* QRViewerViewController.swift */; };
 		F150FC001F3907F70027E59E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FBFF1F3907F70027E59E /* SettingsViewController.swift */; };
 		F1527E3A1F277F6A00E23B07 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1527E391F277F6A00E23B07 /* MainTabBarController.swift */; };
@@ -43,6 +44,7 @@
 		F10F00571F3CA86F00215A75 /* House.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		F11685131F267EC7006E6E9B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F12B84531F26787900F49819 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F1301EE41F4E1D4700EA8CCA /* HouseLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HouseLocationViewController.swift; sourceTree = "<group>"; };
 		F1383C971F311BA0002108AF /* QRViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewerViewController.swift; sourceTree = "<group>"; };
 		F150FBFF1F3907F70027E59E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F1527E391F277F6A00E23B07 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F12B84531F26787900F49819 /* LoginViewController.swift */,
+				F1301EE41F4E1D4700EA8CCA /* HouseLocationViewController.swift */,
 				F1B488CC1F38D6DA00C7F225 /* BoxTableViewController.swift */,
 				F1A40AF81F26CD3700A96B04 /* QRScanViewController.swift */,
 				F1383C971F311BA0002108AF /* QRViewerViewController.swift */,
@@ -330,6 +333,7 @@
 				F1D3BED71F268BA900B15ED1 /* Constants.swift in Sources */,
 				F1551BC11F335E750024B14F /* SignUpViewController.swift in Sources */,
 				F150FC001F3907F70027E59E /* SettingsViewController.swift in Sources */,
+				F1301EE51F4E1D4700EA8CCA /* HouseLocationViewController.swift in Sources */,
 				F1C678E11F27BF830037F687 /* PostService.swift in Sources */,
 				F1E62AE61F3AAB0E009F2C4F /* ImageSaverViewController.swift in Sources */,
 				F1383C981F311BA0002108AF /* QRViewerViewController.swift in Sources */,

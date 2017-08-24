@@ -31,3 +31,8 @@ struct imageAndQR {
 struct boxUIDS {
     let boxID: String!
 }
+
+struct locations {
+    let locationHouse: String!
+    let firLocationUID: String!
+} 

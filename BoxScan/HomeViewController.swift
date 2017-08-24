@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             tableView.reloadData()
         }
     }
+    
     let ezLoadingActivity = EZLoadingActivity.self
     
     var boxIDS = [boxIDSStruct]() {
@@ -158,13 +159,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return
             }
         })
-        //        print(String(cell.label2.text!))
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier! == "CollectionSeg" {
-            let BoxView = segue.destination as! BoxTableViewController
+            let BoxView = segue.destination as! HouseLocationViewController
             //            BoxView.indexNumber1 = indexNumber
             BoxView.indexNumber1 = tableView.indexPathForSelectedRow?.row
             BoxView.boxIDS1 = boxIDS
@@ -177,16 +177,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if segue.identifier! == "CollectionSeg" {
-    //            let BoxView = segue.destination as! BoxTableViewController
-    //            
-    //        }
-    //    }
-    
-    
-}
+ }
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {

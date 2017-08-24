@@ -11,6 +11,84 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Location In House-->
+        <scene sceneID="ywG-iM-iKh">
+            <objects>
+                <viewController id="yL1-9Y-kyp" customClass="HouseLocationViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cX5-gL-iBB"/>
+                        <viewControllerLayoutGuide type="bottom" id="B2D-OQ-wmB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d4G-7I-Iv7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdD-Cl-FPL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wgA-XP-Few">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="5" maxX="8" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HouseLocationCell" id="gyY-6G-jVH" customClass="collectionViewCellHouseLocation" customModule="BoxScan" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="5" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Group-2" translatesAutoresizingMaskIntoConstraints="NO" id="pd0-9v-7xT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="117"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHv-gW-Tgb">
+                                                    <rect key="frame" x="20" y="100" width="110" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" red="0.93333333333333335" green="1" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.49803921568627452" green="0.84705882352941175" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="collectionLabel2" destination="wHv-gW-Tgb" id="U6W-dd-2gA"/>
+                                            <segue destination="8V6-HE-6ke" kind="show" identifier="CollectionSeg2" id="u5t-0d-D8a"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="yL1-9Y-kyp" id="TmR-R1-6EF"/>
+                                    <outlet property="delegate" destination="yL1-9Y-kyp" id="RHQ-y6-ATd"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Location In House" id="GhN-YT-89o">
+                        <barButtonItem key="rightBarButtonItem" title="New Location" id="XfN-bl-Kxc">
+                            <connections>
+                                <action selector="newLocationTapped:" destination="yL1-9Y-kyp" id="gaR-Jk-QFM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="rdD-Cl-FPL" id="oJi-I3-1Vz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBU-xe-GB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519.20000000000005" y="871.21439280359823"/>
+        </scene>
         <!--Make A New Box-->
         <scene sceneID="id7-T2-rR0">
             <objects>
@@ -58,7 +136,7 @@
                                                         <constraint firstAttribute="height" constant="49" id="uNO-WR-MCj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                                    <color key="textColor" red="0.93180400133132935" green="1" blue="0.85316067934036255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.93333333333333335" green="1" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -118,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2Z-TH-rd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="533.60000000000002" y="877.51124437781118"/>
+            <point key="canvasLocation" x="1217" y="881"/>
         </scene>
         <!--Box Contents-->
         <scene sceneID="fwJ-zK-Owj">
@@ -160,7 +238,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RzM-mj-zTI">
-                                <rect key="frame" x="18" y="81" width="341" height="390"/>
+                                <rect key="frame" x="18" y="125" width="341" height="346"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97752434015274048" green="0.93350130319595337" blue="0.91634714603424072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -212,7 +290,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPQ-z4-Mye" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="etm-mN-czU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1357.5999999999999" y="880.20989505247383"/>
+            <point key="canvasLocation" x="2535" y="878"/>
         </scene>
         <!--Scanner-->
         <scene sceneID="Swb-KS-MlW">
@@ -247,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kad-yj-sOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="877.51124437781118"/>
+            <point key="canvasLocation" x="3329" y="878"/>
         </scene>
         <!--QR Code-->
         <scene sceneID="GdJ-f8-5xc">
@@ -262,7 +340,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-Tg-bve">
-                                <rect key="frame" x="16" y="80" width="343" height="448"/>
+                                <rect key="frame" x="16" y="124" width="343" height="404"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97752434015274048" green="0.93350130319595337" blue="0.91634714603424072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -332,10 +410,10 @@
                                                 <constraint firstItem="TRN-mh-C2O" firstAttribute="trailing" secondItem="Bft-6g-q2l" secondAttribute="trailingMargin" id="ufL-rd-Vam"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.97752434015274048" green="0.93350130319595337" blue="0.91634714603424072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.97647058823529409" green="0.93333333333333335" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="label2" destination="TRN-mh-C2O" id="7Xi-QE-3Bm"/>
-                                            <segue destination="8V6-HE-6ke" kind="show" identifier="CollectionSeg" id="cGt-hL-Pc1"/>
+                                            <segue destination="yL1-9Y-kyp" kind="show" identifier="CollectionSeg" id="M4n-13-QKs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -392,7 +470,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UqA-Ag-1aK">
-                                <rect key="frame" x="16" y="352" width="343" height="258"/>
+                                <rect key="frame" x="16" y="352" width="343" height="209"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdR-3n-DZK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -516,10 +594,11 @@
         <image name="Group 2" width="44" height="41"/>
         <image name="Group 2-1" width="42" height="42"/>
         <image name="Group 6-1" width="36" height="35"/>
+        <image name="Group-2" width="536" height="676"/>
         <image name="add" width="126" height="126"/>
         <image name="tab_home_black" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cGt-hL-Pc1"/>
+        <segue reference="u5t-0d-D8a"/>
     </inferredMetricsTieBreakers>
 </document>
