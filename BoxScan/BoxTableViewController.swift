@@ -23,7 +23,7 @@ class collectionCell: UICollectionViewCell {
 
 var keyOfHouse: String?
 var cellIndexPath: Int?
-
+var locCellPath = loc[cellPath!].firLocationUID
 
 //var boxHouseKey = [String]()
 
@@ -40,7 +40,7 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     func myDeleteFunction(childIWantToRemove: Box, completion: @escaping (Int?) -> Void) {
         
         let firebase = Database.database().reference()
-        firebase.child("Boxes").child(boxHouseArray!).child(locationKey!).child(childIWantToRemove.firBoxUID).removeValue { (error, ref) in
+        firebase.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).child("boxIDS").child(childIWantToRemove.firBoxUID).removeValue { (error, ref) in
             if error != nil {
                 completion(nil)
                 print("error \(error)")
@@ -121,8 +121,8 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
                 let boxNameTitle: [String: String] = ["boxNameInput": boxInput!, "boxUid": User.current.uid]
                 let databaseRef = Database.database().reference()
                 //                self.boxHouseArray = self.uidArray[self.indexNumber1!]
-                let temp = databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).childByAutoId()
-                temp.setValue(boxNameTitle) { (error, ref) in
+                let temp = databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).child("boxIDS").childByAutoId()
+                temp.updateChildValues(boxNameTitle) { (error, ref) in
                     if let error = error {
                         assertionFailure(error.localizedDescription)
                         return
@@ -166,9 +166,10 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func loadBoxes() {
         let databaseRef = Database.database().reference()
-        databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.child("Boxes").child(boxHouseArray!).child(loc[cellPath!].firLocationUID).child("boxIDS").observeSingleEvent(of: .value, with: {(snapshot) in
             
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+            
                 else {
                     print("this did not work or there is no data?")
                     return }
@@ -176,9 +177,14 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
             self.boxes = [Box]()
             
             for boxSnapshot in snapshot {
-                let boxData = boxSnapshot.value as! [String: Any?]
+//                guard let boxData = boxSnapshot.value as? [String: Any] else {
+//                    print("error!!!")
+//                    return
+//                }
+                let boxData = boxSnapshot.value as! [String: Any]
                 print(boxData)
-                self.boxes.append(Box(boxTitle: boxData["boxNameInput"] as! String, firBoxUID: boxSnapshot.key))
+                
+                self.boxes.insert(Box(boxTitle: boxData["boxNameInput"] as! String, firBoxUID: boxSnapshot.key), at: 0)
             }
         
             
@@ -202,11 +208,9 @@ class BoxTableViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.collectionView.dataSource = self
         collectionView.isUserInteractionEnabled = true
         
-        if boxes.count != 0 {
-            self.ezLoadingActivity.show("Loading ... ", disableUI: false)
-        }
-        
         loadBoxes()
+        
+        
         
         self.hideKeyboardWhenTappedAround()
     }

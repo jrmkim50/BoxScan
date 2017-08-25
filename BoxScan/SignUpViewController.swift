@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
                 return
             }
             else {
-                self.showAlert("Succesfully signed up.")
+                
                 Database.database().reference().child("users").child((user?.uid)!).updateChildValues(["email": email!])
                 
                 UserService.show(forUID: (user?.uid)!) { (user) in
@@ -43,9 +43,9 @@ class SignUpViewController: UIViewController {
                 }
 
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.signIn()
-            }
+           
+            
+            
         })
         
     }

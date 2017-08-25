@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Location In House-->
+        <!--Location-->
         <scene sceneID="ywG-iM-iKh">
             <objects>
                 <viewController id="yL1-9Y-kyp" customClass="HouseLocationViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                             <constraint firstItem="rdD-Cl-FPL" firstAttribute="top" secondItem="d4G-7I-Iv7" secondAttribute="top" id="PAy-u7-rfQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Location In House" id="GhN-YT-89o">
+                    <navigationItem key="navigationItem" title="Location" id="GhN-YT-89o">
                         <barButtonItem key="rightBarButtonItem" title="New Location" id="XfN-bl-Kxc">
                             <connections>
                                 <action selector="newLocationTapped:" destination="yL1-9Y-kyp" id="gaR-Jk-QFM"/>
@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="519.20000000000005" y="871.21439280359823"/>
         </scene>
-        <!--Make A New Box-->
+        <!--New Box-->
         <scene sceneID="id7-T2-rR0">
             <objects>
                 <viewController id="8V6-HE-6ke" customClass="BoxTableViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4s8-PF-t30">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.41176470588235292" green="0.42352941176470588" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0qq-4T-0iR">
                                     <size key="itemSize" width="150" height="150"/>
@@ -195,7 +195,7 @@
                             <constraint firstItem="4s8-PF-t30" firstAttribute="bottom" secondItem="6SJ-kA-rQz" secondAttribute="top" id="ySk-Fx-njz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Make A New Box" id="Qxm-bX-Nlz">
+                    <navigationItem key="navigationItem" title="New Box" id="Qxm-bX-Nlz">
                         <barButtonItem key="rightBarButtonItem" title="New Box" id="NQT-wS-t9i">
                             <connections>
                                 <action selector="newBoxTapped:" destination="8V6-HE-6ke" id="CuV-pX-Iwp"/>
@@ -387,7 +387,7 @@
             </objects>
             <point key="canvasLocation" x="1336.8" y="1629.5352323838083"/>
         </scene>
-        <!--Find Your Scans-->
+        <!--Your Scans-->
         <scene sceneID="mMi-br-tA3">
             <objects>
                 <viewController id="Ail-c4-rrV" customClass="HomeViewController" customModule="BoxScan" customModuleProvider="target" sceneMemberID="viewController">
@@ -444,7 +444,7 @@
                             <constraint firstItem="SMe-4T-Tka" firstAttribute="leading" secondItem="rzG-5c-gwm" secondAttribute="leading" id="mID-XO-L8g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Find Your Scans" id="gRb-0V-M2x">
+                    <navigationItem key="navigationItem" title="Your Scans" id="gRb-0V-M2x">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="4Wg-lx-5dB">
                             <connections>
                                 <segue destination="Czf-f3-W42" kind="show" identifier="Settings" id="J9f-m6-yLd"/>
@@ -612,6 +612,6 @@
         <image name="tab_home_black" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oUr-gt-KSp"/>
+        <segue reference="yCD-CD-brB"/>
     </inferredMetricsTieBreakers>
 </document>

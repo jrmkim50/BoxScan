@@ -25,6 +25,8 @@ var locationDict: [String]?
 var loc = [locations]()
 var cellPath: Int?
 
+
+
 class HouseLocationViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -55,7 +57,7 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
         print(self.boxIDS1)
         
         self.hideKeyboardWhenTappedAround()
-        Database.database().reference().child("Boxes").child(boxHouseArray!).observe(.value, with: {
+        Database.database().reference().child("Boxes").child(boxHouseArray!).child("Location").observe(.value, with: {
             (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else {
@@ -80,7 +82,7 @@ class HouseLocationViewController: UIViewController, UICollectionViewDelegate, U
             if (locInput!.isEmpty) {
                 return
             } else {
-                let locNameTitle: [String: String] = ["locationInput": locInput!]
+                let locNameTitle: [String: String] = ["locationInput": locInput!, "locID": User.current.uid]
                 let databaseRef = Database.database().reference()
                 //                self.boxHouseArray = self.uidArray[self.indexNumber1!]
                 let temp = databaseRef.child("Boxes").child(boxHouseArray!).childByAutoId()
